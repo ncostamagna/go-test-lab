@@ -10,7 +10,7 @@ type ExampleSuite struct {
 	suite.Suite
 }
 
-func TestExampleSuite(t *testing.T) {
+func TestExampleSuite_Unit(t *testing.T) {
 	suite.Run(t, new(ExampleSuite))
 }
 
@@ -52,3 +52,46 @@ func (suite *ExampleSuite) AfterTest(suiteName, testName string) {
 }
 
 
+
+
+
+
+type ExampleSuiteIntegration struct {
+	suite.Suite
+}
+
+func TestExampleSuite_Integration(t *testing.T) {
+	suite.Run(t, new(ExampleSuiteIntegration))
+}
+
+func (suite *ExampleSuiteIntegration) TestExample() {
+	suite.Equal(1, 1)
+}
+
+func (suite *ExampleSuiteIntegration) TestExample2() {
+	suite.Equal(2, 2)
+}
+
+func (suite *ExampleSuiteIntegration) SetupSuite() {
+	suite.T().Log("SetupSuite_Integration")
+}
+
+func (suite *ExampleSuiteIntegration) TearDownSuite() {
+	suite.T().Log("TearDownSuite_Integration")
+}
+
+func (suite *ExampleSuiteIntegration) SetupTest() {
+	suite.T().Log("SetupTest_Integration")
+}
+
+func (suite *ExampleSuiteIntegration) TearDownTest() {
+	suite.T().Log("TearDownTest_Integration")
+}
+
+func (suite *ExampleSuiteIntegration) BeforeTest(suiteName, testName string) {
+	suite.T().Logf("BeforeTest_Integration: %s, %s", suiteName, testName)
+}
+
+func (suite *ExampleSuiteIntegration) AfterTest(suiteName, testName string) {
+	suite.T().Logf("AfterTest_Integration: %s, %s", suiteName, testName)
+}
