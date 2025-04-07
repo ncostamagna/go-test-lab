@@ -10,13 +10,11 @@ Use cases
 - Tickers
 - Goroutines
 
+```sh
+GOEXPERIMENT=synctest go test ./synctest/example/...
+```
+
 ## Bubble
 insolate environment which controls all this things: timers, tickers and goroutines. It has a virtual clock on-site you dont wait the time to finish.
 <br/>
 If you run a sleep, you dont need to wait this expecitic duration
-
-
-
-
-
-https://www.youtube.com/watch?v=1ZlcsgkOvCk&ab_channel=FloWoelki 11:41
